@@ -15,9 +15,7 @@ import {
   IRecord,
 } from "./types";
 
-//   "email": "victor.hamzat@kibo.school",
-//   "password": "@Promise05"
-const BASE_URL = "https://dandy-voyage-violent-letters-production.pipeops.app/";
+const BASE_URL = import.meta.env.VITE_BASE_URL as string;
 const api = axios.create({
   baseURL: BASE_URL,
   headers: {
