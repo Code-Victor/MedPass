@@ -334,29 +334,205 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({
-  IndexLazyRoute,
-  AboutLazyRoute,
-  AdminRoute: AdminRoute.addChildren({
-    AdminAdminauthRoute: AdminAdminauthRoute.addChildren({
-      AdminAdminauthNotificationsLazyRoute,
-      AdminAdminauthProfileLazyRoute,
-      AdminAdminauthSettingsLazyRoute,
-      AdminAdminauthIndexLazyRoute,
-      AdminAdminauthPatientRecordsPatientIdLazyRoute,
-      AdminAdminauthDepartmentIndexLazyRoute,
-      AdminAdminauthPatientRecordsIndexLazyRoute,
-      AdminAdminauthDepartmentDepartmentIdDoctorLazyRoute,
-      AdminAdminauthPatientRecordsRecordsPatientIdLazyRoute,
-      AdminAdminauthDepartmentDepartmentIdIndexLazyRoute,
-    }),
-    AdminCreateHospitalRoute,
-    AdminInviteSignupRoute,
-    AdminLoginRoute,
-    AdminSignupRoute,
-    AdminVerifyKycRoute,
-  }),
-})
+interface AdminAdminauthRouteChildren {
+  AdminAdminauthNotificationsLazyRoute: typeof AdminAdminauthNotificationsLazyRoute
+  AdminAdminauthProfileLazyRoute: typeof AdminAdminauthProfileLazyRoute
+  AdminAdminauthSettingsLazyRoute: typeof AdminAdminauthSettingsLazyRoute
+  AdminAdminauthIndexLazyRoute: typeof AdminAdminauthIndexLazyRoute
+  AdminAdminauthPatientRecordsPatientIdLazyRoute: typeof AdminAdminauthPatientRecordsPatientIdLazyRoute
+  AdminAdminauthDepartmentIndexLazyRoute: typeof AdminAdminauthDepartmentIndexLazyRoute
+  AdminAdminauthPatientRecordsIndexLazyRoute: typeof AdminAdminauthPatientRecordsIndexLazyRoute
+  AdminAdminauthDepartmentDepartmentIdDoctorLazyRoute: typeof AdminAdminauthDepartmentDepartmentIdDoctorLazyRoute
+  AdminAdminauthPatientRecordsRecordsPatientIdLazyRoute: typeof AdminAdminauthPatientRecordsRecordsPatientIdLazyRoute
+  AdminAdminauthDepartmentDepartmentIdIndexLazyRoute: typeof AdminAdminauthDepartmentDepartmentIdIndexLazyRoute
+}
+
+const AdminAdminauthRouteChildren: AdminAdminauthRouteChildren = {
+  AdminAdminauthNotificationsLazyRoute: AdminAdminauthNotificationsLazyRoute,
+  AdminAdminauthProfileLazyRoute: AdminAdminauthProfileLazyRoute,
+  AdminAdminauthSettingsLazyRoute: AdminAdminauthSettingsLazyRoute,
+  AdminAdminauthIndexLazyRoute: AdminAdminauthIndexLazyRoute,
+  AdminAdminauthPatientRecordsPatientIdLazyRoute:
+    AdminAdminauthPatientRecordsPatientIdLazyRoute,
+  AdminAdminauthDepartmentIndexLazyRoute:
+    AdminAdminauthDepartmentIndexLazyRoute,
+  AdminAdminauthPatientRecordsIndexLazyRoute:
+    AdminAdminauthPatientRecordsIndexLazyRoute,
+  AdminAdminauthDepartmentDepartmentIdDoctorLazyRoute:
+    AdminAdminauthDepartmentDepartmentIdDoctorLazyRoute,
+  AdminAdminauthPatientRecordsRecordsPatientIdLazyRoute:
+    AdminAdminauthPatientRecordsRecordsPatientIdLazyRoute,
+  AdminAdminauthDepartmentDepartmentIdIndexLazyRoute:
+    AdminAdminauthDepartmentDepartmentIdIndexLazyRoute,
+}
+
+const AdminAdminauthRouteWithChildren = AdminAdminauthRoute._addFileChildren(
+  AdminAdminauthRouteChildren,
+)
+
+interface AdminRouteChildren {
+  AdminAdminauthRoute: typeof AdminAdminauthRouteWithChildren
+  AdminCreateHospitalRoute: typeof AdminCreateHospitalRoute
+  AdminInviteSignupRoute: typeof AdminInviteSignupRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminSignupRoute: typeof AdminSignupRoute
+  AdminVerifyKycRoute: typeof AdminVerifyKycRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAdminauthRoute: AdminAdminauthRouteWithChildren,
+  AdminCreateHospitalRoute: AdminCreateHospitalRoute,
+  AdminInviteSignupRoute: AdminInviteSignupRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminSignupRoute: AdminSignupRoute,
+  AdminVerifyKycRoute: AdminVerifyKycRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+export interface FileRoutesByFullPath {
+  '/': typeof IndexLazyRoute
+  '/about': typeof AboutLazyRoute
+  '/admin': typeof AdminAdminauthRouteWithChildren
+  '/admin/create-hospital': typeof AdminCreateHospitalRoute
+  '/admin/invite-signup': typeof AdminInviteSignupRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/signup': typeof AdminSignupRoute
+  '/admin/verify-kyc': typeof AdminVerifyKycRoute
+  '/admin/notifications': typeof AdminAdminauthNotificationsLazyRoute
+  '/admin/profile': typeof AdminAdminauthProfileLazyRoute
+  '/admin/settings': typeof AdminAdminauthSettingsLazyRoute
+  '/admin/': typeof AdminAdminauthIndexLazyRoute
+  '/admin/patient-records/$patientId': typeof AdminAdminauthPatientRecordsPatientIdLazyRoute
+  '/admin/department': typeof AdminAdminauthDepartmentIndexLazyRoute
+  '/admin/patient-records': typeof AdminAdminauthPatientRecordsIndexLazyRoute
+  '/admin/department/$departmentId/doctor': typeof AdminAdminauthDepartmentDepartmentIdDoctorLazyRoute
+  '/admin/patient-records/records/$patientId': typeof AdminAdminauthPatientRecordsRecordsPatientIdLazyRoute
+  '/admin/department/$departmentId': typeof AdminAdminauthDepartmentDepartmentIdIndexLazyRoute
+}
+
+export interface FileRoutesByTo {
+  '/': typeof IndexLazyRoute
+  '/about': typeof AboutLazyRoute
+  '/admin': typeof AdminAdminauthIndexLazyRoute
+  '/admin/create-hospital': typeof AdminCreateHospitalRoute
+  '/admin/invite-signup': typeof AdminInviteSignupRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/signup': typeof AdminSignupRoute
+  '/admin/verify-kyc': typeof AdminVerifyKycRoute
+  '/admin/notifications': typeof AdminAdminauthNotificationsLazyRoute
+  '/admin/profile': typeof AdminAdminauthProfileLazyRoute
+  '/admin/settings': typeof AdminAdminauthSettingsLazyRoute
+  '/admin/patient-records/$patientId': typeof AdminAdminauthPatientRecordsPatientIdLazyRoute
+  '/admin/department': typeof AdminAdminauthDepartmentIndexLazyRoute
+  '/admin/patient-records': typeof AdminAdminauthPatientRecordsIndexLazyRoute
+  '/admin/department/$departmentId/doctor': typeof AdminAdminauthDepartmentDepartmentIdDoctorLazyRoute
+  '/admin/patient-records/records/$patientId': typeof AdminAdminauthPatientRecordsRecordsPatientIdLazyRoute
+  '/admin/department/$departmentId': typeof AdminAdminauthDepartmentDepartmentIdIndexLazyRoute
+}
+
+export interface FileRoutesById {
+  __root__: typeof rootRoute
+  '/': typeof IndexLazyRoute
+  '/about': typeof AboutLazyRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/admin/_adminauth': typeof AdminAdminauthRouteWithChildren
+  '/admin/create-hospital': typeof AdminCreateHospitalRoute
+  '/admin/invite-signup': typeof AdminInviteSignupRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/signup': typeof AdminSignupRoute
+  '/admin/verify-kyc': typeof AdminVerifyKycRoute
+  '/admin/_adminauth/notifications': typeof AdminAdminauthNotificationsLazyRoute
+  '/admin/_adminauth/profile': typeof AdminAdminauthProfileLazyRoute
+  '/admin/_adminauth/settings': typeof AdminAdminauthSettingsLazyRoute
+  '/admin/_adminauth/': typeof AdminAdminauthIndexLazyRoute
+  '/admin/_adminauth/patient-records/$patientId': typeof AdminAdminauthPatientRecordsPatientIdLazyRoute
+  '/admin/_adminauth/department/': typeof AdminAdminauthDepartmentIndexLazyRoute
+  '/admin/_adminauth/patient-records/': typeof AdminAdminauthPatientRecordsIndexLazyRoute
+  '/admin/_adminauth/department/$departmentId/doctor': typeof AdminAdminauthDepartmentDepartmentIdDoctorLazyRoute
+  '/admin/_adminauth/patient-records/records/$patientId': typeof AdminAdminauthPatientRecordsRecordsPatientIdLazyRoute
+  '/admin/_adminauth/department/$departmentId/': typeof AdminAdminauthDepartmentDepartmentIdIndexLazyRoute
+}
+
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/admin/create-hospital'
+    | '/admin/invite-signup'
+    | '/admin/login'
+    | '/admin/signup'
+    | '/admin/verify-kyc'
+    | '/admin/notifications'
+    | '/admin/profile'
+    | '/admin/settings'
+    | '/admin/'
+    | '/admin/patient-records/$patientId'
+    | '/admin/department'
+    | '/admin/patient-records'
+    | '/admin/department/$departmentId/doctor'
+    | '/admin/patient-records/records/$patientId'
+    | '/admin/department/$departmentId'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/admin/create-hospital'
+    | '/admin/invite-signup'
+    | '/admin/login'
+    | '/admin/signup'
+    | '/admin/verify-kyc'
+    | '/admin/notifications'
+    | '/admin/profile'
+    | '/admin/settings'
+    | '/admin/patient-records/$patientId'
+    | '/admin/department'
+    | '/admin/patient-records'
+    | '/admin/department/$departmentId/doctor'
+    | '/admin/patient-records/records/$patientId'
+    | '/admin/department/$departmentId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/admin/_adminauth'
+    | '/admin/create-hospital'
+    | '/admin/invite-signup'
+    | '/admin/login'
+    | '/admin/signup'
+    | '/admin/verify-kyc'
+    | '/admin/_adminauth/notifications'
+    | '/admin/_adminauth/profile'
+    | '/admin/_adminauth/settings'
+    | '/admin/_adminauth/'
+    | '/admin/_adminauth/patient-records/$patientId'
+    | '/admin/_adminauth/department/'
+    | '/admin/_adminauth/patient-records/'
+    | '/admin/_adminauth/department/$departmentId/doctor'
+    | '/admin/_adminauth/patient-records/records/$patientId'
+    | '/admin/_adminauth/department/$departmentId/'
+  fileRoutesById: FileRoutesById
+}
+
+export interface RootRouteChildren {
+  IndexLazyRoute: typeof IndexLazyRoute
+  AboutLazyRoute: typeof AboutLazyRoute
+  AdminRoute: typeof AdminRouteWithChildren
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexLazyRoute: IndexLazyRoute,
+  AboutLazyRoute: AboutLazyRoute,
+  AdminRoute: AdminRouteWithChildren,
+}
+
+export const routeTree = rootRoute
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
 

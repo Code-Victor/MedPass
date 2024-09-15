@@ -4,16 +4,10 @@ import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AxiosError, isAxiosError } from "axios";
 import { Toaster, toast } from "sonner";
-import {
-  RouterProvider,
-  createRouter,
-
-} from "@tanstack/react-router";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
-
-
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,7 +39,6 @@ const router = createRouter({
 declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
-    
   }
 }
 
