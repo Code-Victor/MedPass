@@ -18,7 +18,7 @@ import { phoneNumberSchema } from "@/lib/utils";
 import { authRouter } from "@/api/routers";
 import { toast } from "sonner";
 import { useAuthStore } from "@/store";
-import AuthImage from "@/assets/auth.svg";
+import AuthImage from "@/assets/register-hospital.svg";
 
 const routeApi = getRouteApi("/admin/signup");
 
